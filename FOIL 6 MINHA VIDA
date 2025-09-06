@@ -1,0 +1,78 @@
+# Classe base (molde geral da vida do Maurícyo)
+class Mauricyo:
+    def __init__(self, idade):
+        self.nome = "Maurícyo"
+        self.idade = idade
+    
+    def apresentar(self):
+        print(f"Olá, eu sou {self.nome} e tenho {self.idade} anos.")
+    
+    def viver(self):
+        print("Estou vivendo minha vida...")
+
+
+# Classe que representa a infância do Maurícyo (1 a 6 anos)
+class Crianca(Maurícyo):
+    def viver(self):
+        print(f"{self.nome}, com {self.idade} anos, está passando pela infância.")
+        if 1 <= self.idade <= 6:
+            print("- Nasceu o irmão.")
+            print("- Fez primeiras viagens.")
+            print("- Entrou na escola.")
+            print("- Teve os primeiros melhores amigos.")
+
+
+# Classe que representa a adolescência do Maurícyo (13 a 18 anos)
+class Adolescente(Maurícyo):
+    def viver(self):
+        print(f"{self.nome}, com {self.idade} anos, está na adolescência.")
+        if 13 <= self.idade <= 18:
+            print("- Entrou no ensino médio.")
+            print("- Viveu os primeiros relacionamentos.")
+            print("- Ingressou na faculdade.")
+
+
+# Classe que representa a fase adulta do Maurícyo (19 a 21 anos)
+class Adulto(Maurícyo):
+    def viver(self):
+        print(f"{self.nome}, com {self.idade} anos, está na fase adulta.")
+        if self.idade == 19:
+            print("- Aprendeu a dirigir.")
+        if 19 <= self.idade <= 21:
+            print("- Está cursando a faculdade.")
+
+
+# Classe que representa o projeto de vida/natureza do Maurícyo
+class ProjetoDeVida:
+    def __init__(self, fase):
+        self.fase = fase
+    
+    def executar(self):
+        self.fase.apresentar()
+        self.fase.viver()
+
+
+# ---- Execução ----
+if __name__ == "__main__":
+    # Criando objetos que representam fases da vida do Maurícyo
+    crianca = Crianca(6)
+    adolescente = Adolescente(17)
+    adulto = Adulto(19)
+
+    # Simulando fases da vida do Maurícyo
+    projeto1 = ProjetoDeVida(crianca)
+    projeto1.executar()
+
+    print("\n---\n")
+
+    projeto2 = ProjetoDeVida(adolescente)
+    projeto2.executar()
+
+    print("\n---\n")
+
+    projeto3 = ProjetoDeVida(adulto)
+    projeto3.executar()
+
+    # Objeto pode ser "destruído" no fim (destroy)
+    del adulto
+    print("\nFim do ciclo de vida do Maurícyo.")
