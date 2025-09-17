@@ -12,33 +12,47 @@ class Mauricyo:
 
 
 # Classe que representa a infância do Maurícyo (1 a 6 anos)
-class Crianca(Maurícyo):
+class Crianca(Mauricyo):
     def viver(self):
         print(f"{self.nome}, com {self.idade} anos, está passando pela infância.")
-        if 1 <= self.idade <= 6:
+        if self.idade in [1, 2, 3]:
+            print("- Montou em um pônei.")
+            print("- Pediu um irmão.")
+        elif self.idade == 4:
             print("- Nasceu o irmão.")
+            print("- Ingressou na escola.")
+        elif self.idade == 5:
             print("- Fez primeiras viagens.")
-            print("- Entrou na escola.")
+        elif self.idade == 6:
             print("- Teve os primeiros melhores amigos.")
 
 
 # Classe que representa a adolescência do Maurícyo (13 a 18 anos)
-class Adolescente(Maurícyo):
+class Adolescente(Mauricyo):
     def viver(self):
         print(f"{self.nome}, com {self.idade} anos, está na adolescência.")
-        if 13 <= self.idade <= 18:
-            print("- Entrou no ensino médio.")
+        if self.idade == 13:
+            print("- Ingressou no período da manhã.")
+        elif self.idade == 14:
+            print("- Ingressou no time principal de basquete do colégio.")
+        elif self.idade in [15, 16]:
             print("- Viveu os primeiros relacionamentos.")
+            print("- Ingressou no ensino médio.")
+            print("- Foi campeão do Maristão.")
+        elif self.idade == 17:
+            print("- Terminou o ensino médio.")
+        elif self.idade == 18:
             print("- Ingressou na faculdade.")
 
 
 # Classe que representa a fase adulta do Maurícyo (19 a 21 anos)
-class Adulto(Maurícyo):
+class Adulto(Mauricyo):
     def viver(self):
         print(f"{self.nome}, com {self.idade} anos, está na fase adulta.")
         if self.idade == 19:
             print("- Aprendeu a dirigir.")
-        if 19 <= self.idade <= 21:
+            print("- Está cursando a faculdade.")
+        elif self.idade in [20, 21]:
             print("- Está cursando a faculdade.")
 
 
@@ -54,25 +68,22 @@ class ProjetoDeVida:
 
 # ---- Execução ----
 if __name__ == "__main__":
-    # Criando objetos que representam fases da vida do Maurícyo
-    crianca = Crianca(6)
-    adolescente = Adolescente(17)
-    adulto = Adulto(19)
+    # Infância (1 a 6 anos)
+    for idade in range(1, 7):
+        projeto = ProjetoDeVida(Crianca(idade))
+        projeto.executar()
+        print("\n---\n")
 
-    # Simulando fases da vida do Maurícyo
-    projeto1 = ProjetoDeVida(crianca)
-    projeto1.executar()
+    # Adolescência (13 a 18 anos)
+    for idade in range(13, 19):
+        projeto = ProjetoDeVida(Adolescente(idade))
+        projeto.executar()
+        print("\n---\n")
 
-    print("\n---\n")
+    # Adulto (19 a 21 anos)
+    for idade in range(19, 22):
+        projeto = ProjetoDeVida(Adulto(idade))
+        projeto.executar()
+        print("\n---\n")
 
-    projeto2 = ProjetoDeVida(adolescente)
-    projeto2.executar()
-
-    print("\n---\n")
-
-    projeto3 = ProjetoDeVida(adulto)
-    projeto3.executar()
-
-    # Objeto pode ser "destruído" no fim (destroy)
-    del adulto
-    print("\nFim do ciclo de vida do Maurícyo.")
+    print("Fim do ciclo de vida do Maurícyo.")
